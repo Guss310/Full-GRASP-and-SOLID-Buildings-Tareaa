@@ -6,6 +6,7 @@
 
 using System;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace Full_GRASP_And_SOLID.Library
 {
@@ -30,14 +31,17 @@ namespace Full_GRASP_And_SOLID.Library
             this.tasks.Remove(task);
         }
 
-        public void PrintBuilding()
+        public string StringBuilding()
         {
-            Console.WriteLine($"Edificio {this.Description}:");
+            List<string> lista = new List<string>();
+            lista.Add($"Edificio {this.Description}:");
             foreach (Task task in this.tasks)
             {
-                Console.WriteLine($"{task.Quantity} de '{task.Material.Description}' " +
+                lista.Add($"{task.Quantity} de '{task.Material.Description}' " +
                     $"usando '{task.Equipment.Description}' durante {task.Time}");
             }
+            
+            return string.Join(("\n"), lista.ToArray());
         }
         
         public double GetProductionCost()
